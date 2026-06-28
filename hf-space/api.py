@@ -127,7 +127,7 @@ async def classify(file: UploadFile = File(..., description="Cassava leaf image 
     finally:
         os.unlink(path)
 
-    if result["confidence"] < 0.45:
+    if result["confidence"] < 0.40:
         return ClassifyResponse(
             disease=None, confidence=result["confidence"], is_cassava=False,
             top5=[Prediction(name=n, confidence=p) for n, p in result["top5"]],

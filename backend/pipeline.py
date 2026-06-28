@@ -246,6 +246,23 @@ class CassavaPipeline:
         if edge_density < 0.018:
             return False
 
+        # Center dominance: in a real leaf photo, the center region should be
+        # mostly green. Random objects (bowls, food, etc.) have green only partially.
+        h, w = 128, 128
+        center = leaf_pixels[h//4:3*h//4, w//4:3*w//4]
+        center_green_ratio = float(center.sum()) / (center.shape[0] * center.shape[1])
+        if center_green_ratio < 0.30:
+            return False
+
+        # Color uniformity: cassava leaves have relatively uniform green/yellow hue.
+        # Mixed-content images (food, objects) have high hue variance.
+        leaf_hues = hue[leaf_pixels]
+        if len(leaf_hues) > 100:
+            hue_std = float(np.std(leaf_hues))
+            # Real leaves: hue std < 25. Mixed scenes: hue std > 30.
+            if hue_std > 30:
+                return False
+
         return True
 
     # ── image classification ──────────────────────────────────────────────────
@@ -373,7 +390,7 @@ class CassavaPipeline:
         print(f"  Detected: {classification['display']} ({classification['confidence']*100:.1f}%)")
 
         # Low confidence means the model is uncertain — likely not a cassava leaf
-        if classification["confidence"] < 0.45:
+        if classification["confidence"] < 0.40:
             print("  Rejected: model confidence too low, likely not a cassava leaf.")
             return {
                 "image":       image_path,
