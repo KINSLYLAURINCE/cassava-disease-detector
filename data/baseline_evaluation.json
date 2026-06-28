@@ -1,0 +1,77 @@
+{
+  "model": "TinyLlama-1.1B-Chat (before fine-tuning)",
+  "score": "3/10",
+  "accuracy": 0.3,
+  "results": [
+    {
+      "question": "What causes Cassava Mosaic Disease?",
+      "expected_keyword": "virus",
+      "response": "Cassava Mosaic Disease (CMD) is caused by a fungal pathogen called Clavibacter michiganensis subspecies a. CMD is a major crop disease in Africa and Asia, where it causes significant economic losses t",
+      "keyword_found": false,
+      "time": 31.6
+    },
+    {
+      "question": "What are symptoms of Cassava Brown Streak Disease?",
+      "expected_keyword": "necrosis",
+      "response": "Cassava Brown Streak Disease (CBSD) is a fungal disease that affects cassava plants. Here are some common symptoms:\n\n1. Leaf spot: The first sign of CBSD is a yellow or brown spot on the leaves. The s",
+      "keyword_found": false,
+      "time": 31.9
+    },
+    {
+      "question": "How do you prevent Cassava Bacterial Blight?",
+      "expected_keyword": "resistant",
+      "response": "There are several ways to prevent Cassava Bacterial Blight:\n\n1. Properly clean and sanitize planting materials: Clean and sanitize planting materials such as cassava tubers, cassava leaves, and cassav",
+      "keyword_found": false,
+      "time": 31.9
+    },
+    {
+      "question": "What insect spreads CMD?",
+      "expected_keyword": "whitefl",
+      "response": "Cassava mosaic disease (CMD) is caused by the bacterium Pseudomonas syringae pv. Cayetanensis. The insect that spreads CMD is the cassava mealybug (Pseudococcus longipalpis). This pest is a sap-feedin",
+      "keyword_found": false,
+      "time": 32.0
+    },
+    {
+      "question": "What is CBSD?",
+      "expected_keyword": "brown streak",
+      "response": "CBSD, or Cassava Biosafety and Development, is a global initiative aimed at improving the safety and sustainability of cassava production and consumption. The initiative aims to address the challenges",
+      "keyword_found": false,
+      "time": 31.8
+    },
+    {
+      "question": "How do you treat cassava mosaic disease?",
+      "expected_keyword": "remove",
+      "response": "Cassava mosaic disease is a fungal disease caused by the fungus Phytophthora infestans. It is a major crop disease in many parts of the world, particularly in Africa, Asia, and South America. Here are",
+      "keyword_found": false,
+      "time": 31.8
+    },
+    {
+      "question": "What are signs of cassava green mottle?",
+      "expected_keyword": "mottle",
+      "response": "Cassava green mottle is a common disease of cassava caused by the fungus Phytophthora infestans. Here are some signs of cassava green mottle:\n\n1. Dark spots or patches on the leaves: These are the mos",
+      "keyword_found": true,
+      "time": 32.1
+    },
+    {
+      "question": "When should I harvest cassava?",
+      "expected_keyword": "month",
+      "response": "Cassava is a perennial crop that requires regular harvesting to maintain its health and productivity. Here are some guidelines for when to harvest cassava:\n\n1. In the early stages of growth, harvest t",
+      "keyword_found": false,
+      "time": 31.7
+    },
+    {
+      "question": "What resistant cassava varieties exist?",
+      "expected_keyword": "variety",
+      "response": "There are several resistant cassava varieties that have been developed to combat the cassava mosaic disease (CMD) and other cassava diseases. Here are some examples:\n\n1. CMD-resistant varieties: These",
+      "keyword_found": true,
+      "time": 31.7
+    },
+    {
+      "question": "Can you eat cassava with mosaic disease?",
+      "expected_keyword": "yield",
+      "response": "Yes, cassava is a starchy root vegetable that can be eaten with mosaic disease. Mosaic disease is a common disease that affects cassava plants, and it can cause the leaves and stems of the plant to tu",
+      "keyword_found": true,
+      "time": 31.4
+    }
+  ]
+}

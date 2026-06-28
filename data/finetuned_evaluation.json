@@ -1,0 +1,57 @@
+{
+  "avg_score": 0.322,
+  "baseline": 0.3,
+  "improvement": 0.022,
+  "results": [
+    {
+      "question": "What are the symptoms of cassava mosaic disease?",
+      "answer": "Leaves leaves become distorted and yellow, Poor formation of tubers, The plants is stumted, Mosaic mottling,mishapen and twisted of the leaves, Nutrient deficiencies, Poor development of tubers, Poor yield",
+      "score": 0.6
+    },
+    {
+      "question": "How do I treat bacterial blight in cassava?",
+      "answer": "Use of clean planting material, crop rotation, and the application of bactericides to control the disease.",
+      "score": 0.2
+    },
+    {
+      "question": "What causes cassava brown streak disease?",
+      "answer": "Xanthomonas axonopodis pv. manihotis is the pathogen that causes cassava brown streak disease",
+      "score": 0.25
+    },
+    {
+      "question": "How can I prevent cassava green mottle?",
+      "answer": "Planting disease-resistant varieties",
+      "score": 0.4
+    },
+    {
+      "question": "When should I harvest cassava?",
+      "answer": "When the plants have attained\ncomplete physiological maturity\nas determined by the production of\nsufficient leaves and roots,\nand the formation of\nsufficient tubers",
+      "score": 0.2
+    },
+    {
+      "question": "What is the best spacing for planting cassava?",
+      "answer": "A distance of 1-1.5 meters between rows and 0.75-1 meter between plants",
+      "score": 0.4
+    },
+    {
+      "question": "How do whiteflies spread disease in cassava?",
+      "answer": "Whiteflies spread viruses and bacteria, which can cause significant damage to cassava plants and the surrounding soil.",
+      "score": 0.4
+    },
+    {
+      "question": "What fertilizer is good for cassava?",
+      "answer": "Nitrogen-rich fertilizers such as urea, ammonium nitrate, or diammonium phosphate, are recommended for cassava growth.",
+      "score": 0.17
+    },
+    {
+      "question": "How do I identify healthy cassava leaves?",
+      "answer": "Leaves should be fresh, green, and without signs of drying out or mold.",
+      "score": 0.2
+    },
+    {
+      "question": "What are disease-resistant cassava varieties?",
+      "answer": "Varieties that have been developed through breeding that are resistant to cassava mosaic disease and cassava bacterial blight",
+      "score": 0.4
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "best_val_acc": 0.6623,
+  "final_val_acc": 0.6623,
+  "epochs_trained": 10,
+  "class_names": [
+    "Cassava___bacterial_blight",
+    "Cassava___brown_streak_disease",
+    "Cassava___green_mottle",
+    "Cassava___healthy",
+    "Cassava___mosaic_disease"
+  ],
+  "disease_map": {
+    "Cassava___bacterial_blight": "CBB",
+    "Cassava___brown_streak_disease": "CBSD",
+    "Cassava___green_mottle": "CGM",
+    "Cassava___healthy": "Healthy",
+    "Cassava___mosaic_disease": "CMD"
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 1.2369,
+      "train_acc": 0.4958,
+      "val_loss": 1.1903,
+      "val_acc": 0.4996
+    },
+    {
+      "epoch": 2,
+      "train_loss": 1.1574,
+      "train_acc": 0.5309,
+      "val_loss": 1.0991,
+      "val_acc": 0.5265
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.136,
+      "train_acc": 0.5378,
+      "val_loss": 0.995,
+      "val_acc": 0.5931
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.1109,
+      "train_acc": 0.5549,
+      "val_loss": 0.9304,
+      "val_acc": 0.6616
+    },
+    {
+      "epoch": 5,
+      "train_loss": 1.0936,
+      "train_acc": 0.5648,
+      "val_loss": 0.9985,
+      "val_acc": 0.6086
+    },
+    {
+      "epoch": 6,
+      "train_loss": 1.0914,
+      "train_acc": 0.5633,
+      "val_loss": 0.9915,
+      "val_acc": 0.6308
+    },
+    {
+      "epoch": 7,
+      "train_loss": 1.0689,
+      "train_acc": 0.5754,
+      "val_loss": 1.0113,
+      "val_acc": 0.5994
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.0622,
+      "train_acc": 0.5775,
+      "val_loss": 1.02,
+      "val_acc": 0.5985
+    },
+    {
+      "epoch": 9,
+      "train_loss": 1.0512,
+      "train_acc": 0.5792,
+      "val_loss": 0.9547,
+      "val_acc": 0.6298
+    },
+    {
+      "epoch": 10,
+      "train_loss": 1.0441,
+      "train_acc": 0.5869,
+      "val_loss": 0.8928,
+      "val_acc": 0.6623
+    }
+  ],
+  "classification_report": {
+    "CBB": {
+      "precision": 0.35883905013192613,
+      "recall": 0.6570048309178744,
+      "f1-score": 0.4641638225255973,
+      "support": 207.0
+    },
+    "CBSD": {
+      "precision": 0.5137362637362637,
+      "recall": 0.46633416458852867,
+      "f1-score": 0.4888888888888889,
+      "support": 401.0
+    },
+    "CGM": {
+      "precision": 0.4218077474892396,
+      "recall": 0.5856573705179283,
+      "f1-score": 0.49040867389491244,
+      "support": 502.0
+    },
+    "Healthy": {
+      "precision": 0.4208588957055215,
+      "recall": 0.6363636363636364,
+      "f1-score": 0.5066469719350074,
+      "support": 539.0
+    },
+    "CMD": {
+      "precision": 0.9258893280632411,
+      "recall": 0.7125475285171102,
+      "f1-score": 0.8053287494628276,
+      "support": 2630.0
+    },
+    "accuracy": 0.6623042767001636,
+    "macro avg": {
+      "precision": 0.5282262570252384,
+      "recall": 0.6115815061810156,
+      "f1-score": 0.5510874213414467,
+      "support": 4279.0
+    },
+    "weighted avg": {
+      "precision": 0.7370804608475693,
+      "recall": 0.6623042767001636,
+      "f1-score": 0.6846012710826582,
+      "support": 4279.0
+    }
+  }
+}

@@ -1,0 +1,140 @@
+===============================================================================
+CASSAVA DISEASE DETECTOR — PROJECT STRUCTURE
+===============================================================================
+
+A full MLOps pipeline: image classification + LLM advice + web search +
+feedback loop retraining, served via FastAPI with a React frontend.
+
+===============================================================================
+ROOT FILES
+===============================================================================
+
+pipeline.py
+  The core inference engine. Combines all 3 stages:
+  1) HSV leaf pre-check (rejects non-leaf images)
+  2) EfficientNet-B4 classification (5 disease classes)
+  3) Cached LLM advice (TinyLlama QLoRA) + DuckDuckGo web search
+  Can be used standalone via CLI: python pipeline.py image.jpg
+
+api.py
+  FastAPI backend serving the pipeline as HTTP endpoints:
+  - POST /classify    — image → disease + confidence (fast, no LLM)
+  - POST /analyze     — image → disease + advice + web results (full)
+  - POST /advise      — image + question → custom LLM answer
+  - POST /feedback    — store user feedback (correct/wrong)
+  - GET  /feedback/stats — aggregated feedback statistics
+  - GET  /diseases    — list all 5 detectable diseases
+  - GET  /health      — API status check
+
+evaluate_models.py
+  Evaluation script comparing fine-tuned LLM against baseline on 10 test
+  questions. Also evaluates image classifier accuracy on validation set.
+
+retrain_from_feedback.py
+  Feedback loop retraining script. Reads data/feedback_log.jsonl, converts
+  "wrong" corrections into QA training samples, runs incremental QLoRA
+  fine-tuning on the existing adapter. Run when you have 5+ corrections.
+
+train_image_classifier.py
+  Training script for the EfficientNet-B4 image classifier.
+  Used locally or on Colab. Output: models/cassava_efficientnet_b4.pth
+
+train_llm_qlora.py
+  Local training script for TinyLlama QLoRA fine-tuning.
+  (Actual training was done on Kaggle via kaggle_kernel/kernel.py)
+
+run_all_training.py
+  Orchestrator script to run both training stages sequentially.
+
+===============================================================================
+FOLDERS
+===============================================================================
+
+models/
+  Trained model weights (DO NOT DELETE):
+  - cassava_efficientnet_b4.pth   — Image classifier (83.45% accuracy)
+  - mobilenetv2_cassava.pth       — Old MobileNet model (deprecated)
+  - tinyllama-1.1b-chat/          — Base TinyLlama model files
+  - tinyllama-cassava-finetuned/  — QLoRA adapter weights (fine-tuned)
+
+data/
+  Project data files:
+  - cassava-dataset/data/         — Training images (5 class folders)
+  - cassava_qa_dataset.json       — QA pairs for LLM training (3542 samples)
+  - baseline_evaluation.json      — Pre-fine-tune LLM test results (30%)
+  - finetuned_evaluation.json     — Post-fine-tune LLM test results
+  - image_classifier_results.json — Image classifier metrics
+  - advice_cache.json             — Pre-generated LLM advice (5 diseases)
+  - feedback_log.jsonl            — User feedback from the web app
+
+kaggle_kernel/
+  Files for running training on Kaggle:
+  - kernel.py               — The actual training script pushed to Kaggle
+  - kernel-metadata.json    — Kaggle kernel configuration
+
+kaggle_dataset/
+  Dataset metadata for Kaggle:
+  - cassava_qa_dataset.json — QA training data (uploaded to Kaggle)
+  - dataset-metadata.json   — Kaggle dataset configuration
+
+kaggle_output/
+  Raw output pulled from Kaggle after training completes:
+  - tinyllama-cassava-finetuned/  — Adapter weights (copied to models/)
+  - llm_results.json              — Training metrics
+  - cassava-disease-detector-training.log — Full training log
+
+frontend/
+  React + Tailwind + Vite web application:
+  - src/App.jsx                    — Root: routing, ambient background
+  - src/pages/Detect.jsx           — Main page: upload + analysis
+  - src/pages/History.jsx          — Past scans with charts
+  - src/pages/About.jsx            — Pipeline explanation + stats
+  - src/components/Navbar.jsx      — Desktop top navigation
+  - src/components/MobileNav.jsx   — Mobile bottom tab bar
+  - src/components/DropZone.jsx    — Image upload drag & drop area
+  - src/components/ResultCard.jsx  — Disease result display + OOD rejection
+  - src/components/ConfidenceBar.jsx — Animated confidence bars
+  - src/components/FeedbackPanel.jsx — User feedback form
+  - src/components/SkeletonLoader.jsx — Loading spinners/skeletons
+  - src/lib/api.js                 — API client (env var for base URL)
+  - src/index.css                  — Tailwind + custom animations
+  - .env                           — Environment variables
+  - vite.config.js                 — Vite config with API proxy
+  - package.json                   — Dependencies
+
+venv/
+  Python virtual environment (auto-generated, not committed to git).
+
+===============================================================================
+HOW TO RUN
+===============================================================================
+
+Backend:
+  cd H:/LLMOPS/cassava-disease-detector
+  venv/Scripts/python.exe -m uvicorn api:app --host 0.0.0.0 --port 8000
+
+Frontend (dev):
+  cd H:/LLMOPS/cassava-disease-detector/frontend
+  npm run dev
+
+Access:
+  Frontend → http://localhost:5173
+  API docs → http://localhost:8000/docs
+
+Retrain from feedback:
+  venv/Scripts/python.exe retrain_from_feedback.py --min-corrections 5
+
+===============================================================================
+DELETED (UNNECESSARY)
+===============================================================================
+
+.idea/              — IDE config (auto-generated by PyCharm)
+__pycache__/        — Python bytecode cache
+monitoring/         — Empty folder
+notebooks/          — Empty folder
+src/                — Empty folder
+colab_training.ipynb — Old Colab notebook (superseded by kaggle_kernel/)
+kaggle_logs.txt     — Old log file
+test_dog.jpg        — Test image used during development
+
+===============================================================================

@@ -1,0 +1,39 @@
+# Virtual environment
+venv/
+
+# Models (too large for git)
+models/tinyllama-1.1b-chat/
+models/tinyllama-cassava-finetuned/
+models/*.pth
+
+# Dataset images (21k+ images)
+data/cassava-dataset/
+data/cassava-leaf-disease-classification.zip
+
+# Kaggle artifacts
+kaggle_dataset/
+kaggle_output/
+kaggle_kernel/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Node (frontend)
+frontend/node_modules/
+frontend/dist/
