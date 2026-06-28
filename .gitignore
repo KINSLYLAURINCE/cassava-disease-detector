@@ -1,14 +1,11 @@
-# Virtual environment
-venv/
-
-# Models (too large for git)
-models/tinyllama-1.1b-chat/
-models/tinyllama-cassava-finetuned/
-models/*.pth
-
-# Dataset images (21k+ images)
-data/cassava-dataset/
-data/cassava-leaf-disease-classification.zip
+# Backend
+backend/venv/
+backend/models/tinyllama-1.1b-chat/
+backend/models/tinyllama-cassava-finetuned/
+backend/models/*.pth
+backend/data/cassava-dataset/
+backend/data/cassava-leaf-disease-classification.zip
+backend/__pycache__/
 
 # Kaggle artifacts
 kaggle_dataset/
@@ -34,6 +31,6 @@ build/
 Thumbs.db
 .DS_Store
 
-# Node (frontend)
+# Frontend
 frontend/node_modules/
 frontend/dist/
