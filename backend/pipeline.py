@@ -197,10 +197,9 @@ class CassavaPipeline:
 
     def is_leaf_image(self, image_path: str, green_threshold: float = 0.15) -> bool:
         """
-        Quick check: is this image likely a plant leaf?
-        Uses HSV color space to measure green pixel ratio.
-        Cassava leaves (healthy or diseased) always have significant green/yellow-green content.
-        A dog, car, or random object typically has < 15% green pixels.
+        Check if image is likely a plant leaf using HSV green ratio
+        AND edge texture analysis. A plain green background will have
+        very few edges compared to a real leaf with veins and texture.
         """
         img = Image.open(image_path).convert("RGB")
         img_small = img.resize((128, 128))
@@ -230,11 +229,24 @@ class CassavaPipeline:
         sat[cmax > 0] = diff[cmax > 0] / cmax[cmax > 0]
 
         # Green/yellow-green range: hue 35-155, saturation > 0.15, brightness > 0.12
-        # Excludes browns (hue < 35) and blues (hue > 155)
         leaf_pixels = ((hue >= 35) & (hue <= 155) & (sat > 0.15) & (cmax > 0.12))
         green_ratio = float(leaf_pixels.sum()) / (128 * 128)
 
-        return green_ratio >= green_threshold
+        if green_ratio < green_threshold:
+            return False
+
+        # Texture check: real leaves have edges (veins, lesions, borders).
+        # Plain green backgrounds or solid-color images have very low edge density.
+        gray = 0.299 * r + 0.587 * g + 0.114 * b
+        # Simple Sobel-like edge magnitude
+        dx = np.abs(np.diff(gray, axis=1))
+        dy = np.abs(np.diff(gray, axis=0))
+        edge_density = (float(dx.mean()) + float(dy.mean())) / 2
+        # Real leaves typically have edge_density > 0.02; flat backgrounds < 0.015
+        if edge_density < 0.018:
+            return False
+
+        return True
 
     # ── image classification ──────────────────────────────────────────────────
 
@@ -359,6 +371,20 @@ class CassavaPipeline:
 
         classification = self.classify(image_path)
         print(f"  Detected: {classification['display']} ({classification['confidence']*100:.1f}%)")
+
+        # Low confidence means the model is uncertain — likely not a cassava leaf
+        if classification["confidence"] < 0.45:
+            print("  Rejected: model confidence too low, likely not a cassava leaf.")
+            return {
+                "image":       image_path,
+                "disease":     None,
+                "confidence":  classification["confidence"],
+                "is_cassava":  False,
+                "top5":        classification["top5"],
+                "advice":      None,
+                "web_results": [],
+                "error":       "This image does not appear to be a cassava leaf. The model could not identify a disease with sufficient confidence. Please upload a clear, close-up photo of a cassava leaf.",
+            }
 
         print("  Generating advice...")
         advice = self.advise(classification["label"], question)
