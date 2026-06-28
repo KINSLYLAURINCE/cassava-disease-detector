@@ -1,0 +1,175 @@
+{
+  "best_val_acc": 0.8345,
+  "history": [
+    {
+      "epoch": 1,
+      "train_acc": 0.58,
+      "val_acc": 0.7287
+    },
+    {
+      "epoch": 2,
+      "train_acc": 0.669,
+      "val_acc": 0.7689
+    },
+    {
+      "epoch": 3,
+      "train_acc": 0.7015,
+      "val_acc": 0.7668
+    },
+    {
+      "epoch": 4,
+      "train_acc": 0.7349,
+      "val_acc": 0.7852
+    },
+    {
+      "epoch": 5,
+      "train_acc": 0.7416,
+      "val_acc": 0.8044
+    },
+    {
+      "epoch": 6,
+      "train_acc": 0.7529,
+      "val_acc": 0.8023
+    },
+    {
+      "epoch": 7,
+      "train_acc": 0.7603,
+      "val_acc": 0.8039
+    },
+    {
+      "epoch": 8,
+      "train_acc": 0.7716,
+      "val_acc": 0.8049
+    },
+    {
+      "epoch": 9,
+      "train_acc": 0.7802,
+      "val_acc": 0.8135
+    },
+    {
+      "epoch": 10,
+      "train_acc": 0.7862,
+      "val_acc": 0.8098
+    },
+    {
+      "epoch": 11,
+      "train_acc": 0.7956,
+      "val_acc": 0.81
+    },
+    {
+      "epoch": 12,
+      "train_acc": 0.7948,
+      "val_acc": 0.813
+    },
+    {
+      "epoch": 13,
+      "train_acc": 0.8002,
+      "val_acc": 0.8345
+    },
+    {
+      "epoch": 14,
+      "train_acc": 0.8039,
+      "val_acc": 0.8102
+    },
+    {
+      "epoch": 15,
+      "train_acc": 0.8013,
+      "val_acc": 0.8084
+    },
+    {
+      "epoch": 16,
+      "train_acc": 0.8111,
+      "val_acc": 0.814
+    },
+    {
+      "epoch": 17,
+      "train_acc": 0.816,
+      "val_acc": 0.824
+    },
+    {
+      "epoch": 18,
+      "train_acc": 0.8212,
+      "val_acc": 0.8236
+    },
+    {
+      "epoch": 19,
+      "train_acc": 0.8152,
+      "val_acc": 0.8203
+    },
+    {
+      "epoch": 20,
+      "train_acc": 0.8197,
+      "val_acc": 0.8264
+    },
+    {
+      "epoch": 21,
+      "train_acc": 0.8208,
+      "val_acc": 0.8275
+    },
+    {
+      "epoch": 22,
+      "train_acc": 0.8195,
+      "val_acc": 0.8268
+    },
+    {
+      "epoch": 23,
+      "train_acc": 0.8244,
+      "val_acc": 0.8285
+    },
+    {
+      "epoch": 24,
+      "train_acc": 0.8211,
+      "val_acc": 0.8264
+    },
+    {
+      "epoch": 25,
+      "train_acc": 0.8208,
+      "val_acc": 0.8194
+    }
+  ],
+  "classification_report": {
+    "bacterial_blight": {
+      "precision": 0.5240174672489083,
+      "recall": 0.5797101449275363,
+      "f1-score": 0.5504587155963303,
+      "support": 207.0
+    },
+    "brown_streak_disease": {
+      "precision": 0.6869565217391305,
+      "recall": 0.7880299251870324,
+      "f1-score": 0.7340301974448316,
+      "support": 401.0
+    },
+    "green_mottle": {
+      "precision": 0.6842105263157895,
+      "recall": 0.8027888446215139,
+      "f1-score": 0.7387717690192483,
+      "support": 502.0
+    },
+    "healthy": {
+      "precision": 0.5928677563150074,
+      "recall": 0.7402597402597403,
+      "f1-score": 0.6584158415841584,
+      "support": 539.0
+    },
+    "mosaic_disease": {
+      "precision": 0.9742268041237113,
+      "recall": 0.8623574144486692,
+      "f1-score": 0.9148850342880194,
+      "support": 2630.0
+    },
+    "accuracy": 0.8193503154942744,
+    "macro avg": {
+      "precision": 0.6924558151485094,
+      "recall": 0.7546292138888984,
+      "f1-score": 0.7193123115865176,
+      "support": 4279.0
+    },
+    "weighted avg": {
+      "precision": 0.8434650807776563,
+      "recall": 0.8193503154942744,
+      "f1-score": 0.8273400958501597,
+      "support": 4279.0
+    }
+  }
+}
