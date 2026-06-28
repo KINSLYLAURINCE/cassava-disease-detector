@@ -1,0 +1,6 @@
+venv/
+models/
+data/cassava-dataset/
+data/cassava-leaf-disease-classification.zip
+__pycache__/
+*.pyc
